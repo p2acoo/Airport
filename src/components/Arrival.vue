@@ -28,6 +28,8 @@
 </template>
 
 <script>
+//retrieve credentials from json file
+
 import json from "./config.json";
 export default {
   name: "MyArrive",
@@ -44,10 +46,11 @@ export default {
     this.getData(airport, this.getDate().today, this.getDate().tomorrow);
   },
   methods: {
+    // retrieve data from opensky API
     async getData(airport, today, tomorrow) {
-      var headers = new Headers();
-      var username = this.MyJson.username;
-      var password = this.MyJson.password;
+      let headers = new Headers();
+      let username = this.MyJson.username;
+      let password = this.MyJson.password;
 
       headers.append(
         "Authorization",
@@ -66,6 +69,7 @@ export default {
         }
       );
       const data = await response.json();
+      // transform unix timestamp to readable date
       for (let i in data) {
         data[i].firstSeen = new Date(data[i].firstSeen * 1000).toLocaleString(
           "fr-FR"
@@ -76,6 +80,7 @@ export default {
       }
       this.datas = data;
     },
+    // retrieve today and tomorrow date in unix format
     getDate() {
       let date = new Date();
       let today =

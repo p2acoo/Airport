@@ -36,6 +36,7 @@
 </template>
 
 <script>
+//retrieve airports from json file
 import json from "./components/config.json";
 export default {
   data() {
@@ -55,6 +56,7 @@ export default {
 
     url() {
       this.current = window.location.href.split("/")[4];
+      // add default airport if nothing selected
       if (this.current == undefined) {
         this.current = "LFPG";
       }
