@@ -87,13 +87,13 @@ export default {
     getDate() {
       let date = new Date();
       let today =
-        date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + (date.getDate()-1);
       let tomorrow =
         date.getFullYear() +
         "-" +
         (date.getMonth() + 1) +
         "-" +
-        (date.getDate() + 1);
+        (date.getDate()+1);
 
       let todayunix = Math.floor(new Date(today).getTime() / 1000);
       let tomorrowunix = Math.floor(new Date(tomorrow).getTime() / 1000);
